@@ -25,6 +25,9 @@ app.use(
     secret: process.env.SECRET_KEY!,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: true,
+    },
   })
 );
 app.use(bodyParser.json());
@@ -32,7 +35,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 router.init();
-
 
 const start = async () => {
   try {
