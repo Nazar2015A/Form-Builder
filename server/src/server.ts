@@ -27,6 +27,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       secure: true,
+      sameSite: "none",
     },
   })
 );
