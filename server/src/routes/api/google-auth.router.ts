@@ -21,6 +21,7 @@ router.get(
 );
 
 router.get("/logout", (req: Request, res: Response) => {
+  res.clearCookie("user");
   req.logout((err) => {
     if (err) {
       return res.status(500).json({ message: "Error" });
