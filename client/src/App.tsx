@@ -8,25 +8,46 @@ import ProtectedRoute from "./components/AuthRoutes/ProtectedRoute";
 import FormsPage from "./pages/Forms/Forms";
 import SubmitPage from "./pages/Submit/SubmitPage";
 import PublicRoute from "./components/AuthRoutes/PublicRoute";
+import { HealthCheckConfig } from "@webscopeio/react-health-check";
 import "./globals.css";
 
 function App() {
   return (
-    <Router basename="/">
-      <Layout>
-        <Routes>
-          <Route element={<ProtectedRoute />}>
-            <Route path={RouteConsts.HOME} element={<Home />} />
-            <Route path={`${RouteConsts.BUILDER}/:id`} element={<Builder />} />
-            <Route path={`${RouteConsts.FORMS}/:id`} element={<FormsPage />} />
-          </Route>
-          <Route path={`${RouteConsts.SUBMIT}/:url`} element={<SubmitPage />} />
-          <Route element={<PublicRoute />}>
-            <Route path={RouteConsts.LOGIN} element={<LoginPage />} />
-          </Route>
-        </Routes>
-      </Layout>
-    </Router>
+    <HealthCheckConfig
+      value={{
+        services: [
+          {
+            name: "auth",
+            url: import.meta.env.VITE_SERVER_URL,
+          },
+        ],
+      }}
+    >
+      <Router basename="/">
+        <Layout>
+          <Routes>
+            <Route element={<ProtectedRoute />}>
+              <Route path={RouteConsts.HOME} element={<Home />} />
+              <Route
+                path={`${RouteConsts.BUILDER}/:id`}
+                element={<Builder />}
+              />
+              <Route
+                path={`${RouteConsts.FORMS}/:id`}
+                element={<FormsPage />}
+              />
+            </Route>
+            <Route
+              path={`${RouteConsts.SUBMIT}/:url`}
+              element={<SubmitPage />}
+            />
+            <Route element={<PublicRoute />}>
+              <Route path={RouteConsts.LOGIN} element={<LoginPage />} />
+            </Route>
+          </Routes>
+        </Layout>
+      </Router>
+    </HealthCheckConfig>
   );
 }
 
