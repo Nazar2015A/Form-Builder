@@ -5,8 +5,6 @@ class UserController {
   constructor() {}
 
   async getUser(req: Request, res: Response) {
-    console.log("isAutetificated", req.isAuthenticated())
-    console.log(req)
     if (!req.user) {
       return res.status(401).send("Unauthorized");
     }
