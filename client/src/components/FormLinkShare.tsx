@@ -9,7 +9,7 @@ interface Props {
 }
 
 const FormLinkShare: FC<Props> = ({ shareUrl }) => {
-  const shareLink = `${window.location.origin}/submit/${shareUrl}`;
+  const shareLink = `${window.location.origin}/#/submit/${shareUrl}`;
   const handleClipboardWrite = () => {
     navigator.clipboard.writeText(shareLink);
     toast({

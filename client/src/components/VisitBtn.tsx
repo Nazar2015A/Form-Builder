@@ -6,7 +6,7 @@ interface Props {
 }
 
 const VisitBtn: FC<Props> = ({ shareUrl }) => {
-  const shareLink = `${window.location.origin}/submit/${shareUrl}`;
+  const shareLink = `${window.location.origin}/#/submit/${shareUrl}`;
   const handleOpenLink = () => {
     window.open(shareLink, "_blank");
   };

@@ -37,7 +37,7 @@ const FormBuilder: FC<Props> = ({ form }) => {
 
   const sensors = useSensors(pointerSensor);
   if (form.isPublished) {
-    const shareUrl = `${window.location.origin}/submit/${form.shareUrl}`;
+    const shareUrl = `${window.location.origin}/#/submit/${form.shareUrl}`;
     const handleCopyLink = () => {
       navigator.clipboard.writeText(shareUrl);
       toast({
