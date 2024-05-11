@@ -7,8 +7,8 @@ import { RouteConsts } from "./consts/route-consts";
 import ProtectedRoute from "./components/AuthRoutes/ProtectedRoute";
 import FormsPage from "./pages/Forms/Forms";
 import SubmitPage from "./pages/Submit/SubmitPage";
-import "./globals.css";
 import PublicRoute from "./components/AuthRoutes/PublicRoute";
+import "./globals.css";
 
 function App() {
   return (
