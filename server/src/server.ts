@@ -26,6 +26,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60,
+      httpOnly: false,
+      secure: true,
+      sameSite: "none"
     },
   })
 );
@@ -34,10 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 router.init();
-console.log("CLIENT_URL:", process.env.CLIENT_URL!)
-console.log("SECRET_KEY:", process.env.SECRET_KEY!)
-console.log("PORT:", process.env.PORT!)
-console.log("MONGO_URL:", process.env.MONGO_URL!)
+
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL!);
