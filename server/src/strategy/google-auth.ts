@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import { Strategy as GoogleStrategy, Profile } from "passport-google-oauth20";
 import userModel from "../models/user.model";
 dotenv.config();
-
+console.log("CLIENT_ID:", process.env.CLIENT_ID!)
+console.log("CLIENT_SECRET:", process.env.CLIENT_SECRET!)
+console.log("CALLBACK_URL:", process.env.CALLBACK_URL!)
 passport.use(
   new GoogleStrategy(
     {
