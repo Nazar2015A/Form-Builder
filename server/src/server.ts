@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
 import session from "express-session";
+import cookieParser from "cookie-parser";
 import passport from "./strategy/google-auth";
 import AppRouter from "./routes";
 
@@ -19,6 +20,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 app.use(
   session({
     secret: process.env.SECRET_KEY!,
@@ -26,9 +28,6 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60,
-      httpOnly: false,
-      secure: true,
-      sameSite: "none"
     },
   })
 );

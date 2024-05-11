@@ -11,6 +11,11 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req: Request, res: Response) => {
+    res.cookie("user", req.user, {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      secure: true,
+      sameSite: 'none',
+    })
     res.redirect(process.env.CLIENT_URL!);
   }
 );

@@ -5,11 +5,11 @@ class UserController {
   constructor() {}
 
   async getUser(req: Request, res: Response) {
-    if (!req.user) {
+    if (!req.cookies.user) {
       return res.status(401).send("Unauthorized");
     }
 
-    const { profileId } = req.user as { profileId: string };
+    const { profileId } = req.cookies.user as { profileId: string };
 
     const candidate = await userModel
       .findOne({ profileId })
