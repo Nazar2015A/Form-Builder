@@ -8,6 +8,7 @@ declare global {
       CLIENT_SECRET: string;
       SECRET_KEY: string;
       CALLBACK_URL: string;
+      SERVER_URL: string;
     }
   }
 }

@@ -48,4 +48,10 @@ const start = async () => {
   }
 };
 
+const healthCare = () => {
+  setInterval(() => {
+    fetch(process.env.SERVER_URL!);
+  }, 300000);
+};
+healthCare();
 start();
